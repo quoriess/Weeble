@@ -1,0 +1,58 @@
+
+#main {
+  font-family:arial;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width:100%;
+}
+.txtbox_buton{
+	margin-top:20px
+}
+.txtbox{
+	width:100%;
+	float:left;
+	height:30px;
+}
+#theImage{
+	width:100%;
+	height:100%;
+}
+.hiddenBox{
+	display:none;
+	margin-top:10px;
+}
+#rel-container{
+	width:40%;
+	float:left;
+	height:100%;
+	position:relative;
+	
+}
+#txtBox-container{
+	float:right;
+	width:60%;
+	position:relative;
+}
+.tile{
+	background-color:black;
+}
+#dialog{
+}
+footer{
+	position: fixed;
+    height: 20px;
+	font-family:"Consolas";
+	font-size:8px;
+	float:left;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+	
+}
+.enter{
+	width:22%;
+	float:right;
+	height:30px;
+}
