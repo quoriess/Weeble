@@ -1,6 +1,13 @@
-
+function getCurrentDate() {
+  const t = new Date();
+  const date = ('0' + t.getUTCDate()).slice(-2);
+  const month = ('0' + (t.getUTCMonth() + 1)).slice(-2);
+  const year = t.getUTCFullYear();
+  return date+"/"+month+"/"+year;
+}
+var rngGen=new Math.seedrandom(getCurrentDate());
 function getRandomInt(min,max) {
-  return min+Math.floor(Math.random() * (max-min));
+  return min+Math.floor(rngGen() * (max-min));
 }
 var shuffled=[]
 var clueNo=0;

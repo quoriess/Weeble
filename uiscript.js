@@ -42,8 +42,9 @@ function showFaqs(){
 }
 var tries=0;
 function copyToCB(){
-	  navigator.clipboard.writeText("Weeble #???: \n"+"\uD83D\uDFE5".repeat(tries-1)+"\uD83D\uDFE9");
-
+	var t1=new Date(2022,3,27);
+	var s= Math.floor((new Date()-t1)/(24*3600*1000))+1;
+	navigator.clipboard.writeText("Weeble #"+s+": \n"+"\uD83D\uDFE5".repeat(tries-1)+"\uD83D\uDFE9");
 }
 function valueEntered() {
     if (clueNo == 6) return;
@@ -59,7 +60,7 @@ function valueEntered() {
 		tries=clueNo;
 		$("#g"+clueNo).css("background-color","green");	
 		while(clueNo<=6)nextClue();		
-		$(".hiddenBox").html("Well done! <button style='float:right' onclick='copyToCB()'>Share</button>");
+		$(".hiddenBox").html("You guessed it right. Shame! <button style='float:right' onclick='copyToCB()'>Share</button>");
 		$(".hiddenBox").css("display","block");
 	}
 	else{
