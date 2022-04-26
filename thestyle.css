@@ -7,10 +7,12 @@
   width:100%;
 }
 .txtbox_buton{
-	margin-top:20px
+	margin-top:20px;
+	height:40px;
+	
 }
 .txtbox{
-	width:100%;
+	width:74%;
 	float:left;
 	height:30px;
 }
@@ -24,8 +26,9 @@
 }
 #rel-container{
 	width:40%;
-	float:left;
-	height:100%;
+	min-width:15em;
+	height:250px;
+	display:inline-block;
 	position:relative;
 	
 }
@@ -33,6 +36,14 @@
 	float:right;
 	width:60%;
 	position:relative;
+}
+.guess{
+	width:100%;
+	border:1px solid black;
+	padding-top:3px;
+	text-align:center;
+	margin-top:5px;
+	min-height:30px;
 }
 .tile{
 	background-color:black;

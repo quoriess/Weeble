@@ -4,7 +4,6 @@ function getRandomInt(min,max) {
 }
 var shuffled=[]
 var clueNo=0;
-var keyNow=keys[getRandomInt(0,keys.length)]
 function generateTileOrder(){
 	var alls=[];
 	for(var i=0;i<GRID_SIZE*GRID_SIZE;i++){
@@ -43,7 +42,6 @@ function generateTileOrder(){
 var steps=[3,4,6,6,6,11]
 var curRevealed=0;
 function nextClue(){
-	if(clueNo==6)return;
 	for(var j=0;j<steps[clueNo];j++){
 		$("#t"+shuffled[curRevealed]).fadeOut();
 		curRevealed+=1;
