@@ -17,7 +17,7 @@ function generateTileOrder(){
 		alls.push(i);
 	}
 	var s1 = alls
-	  .map(value => ({ value, sort: Math.random() }))
+	  .map(value => ({ value, sort: rngGen() }))
 	  .sort((a, b) => a.sort - b.sort)
 	  .map(({ value }) => value);
 	var ars=[]
