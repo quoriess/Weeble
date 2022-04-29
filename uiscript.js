@@ -34,7 +34,10 @@ $(function() {
 	generateTileOrder();
 	keyNow=keys[getRandomInt(0,keys.length)]
 	$("#theImage").attr("src",data[keyNow]);
-	nextClue();
+	load();
+	if(clueNo==0){
+		nextClue();
+	}
 });
 function showFaqs(){
 	$("#dialog").dialog('open');
@@ -56,6 +59,7 @@ function valueEntered() {
         return;
     }
     ne.textContent = txtbox.value;
+	setCookie("g"+clueNo,txtbox.value);
     if(txtbox.value==keyNow){
 		tries=clueNo;
 		$("#g"+clueNo).css("background-color","green");	

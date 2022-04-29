@@ -5,6 +5,56 @@ function getCurrentDate() {
   const year = t.getUTCFullYear();
   return date+"/"+month+"/"+year;
 }
+function convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
+    return newDate;   
+}
+function setCookie(cname, cvalue) {
+  var nw=new Date();
+  nw.setDate(nw.getDate()+1);
+  var f=new Date(nw.getUTCFullYear(),nw.getUTCMonth(),nw.getUTCDate());
+  var d=convertUTCDateToLocalDate(f);
+  let expires = "expires="+d;
+  console.log(expires);
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+  console.log(document.cookie);
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function load(){
+	var s=1;
+	while(getCookie("g"+s)!=""){
+		clueNo+=1;
+		var ne = document.getElementById('g' + s);
+		ne.textContent=getCookie("g"+s);
+		if(getCookie("g"+s)==keys[keyNow]){
+			$("#g"+clueNo).css("background-color","red");
+			while(clueNo<=6)nextClue();		
+			$(".hiddenBox").html("You guessed it right. Shame! <button style='float:right' onclick='copyToCB()'>Share</button>");
+			$(".hiddenBox").css("display","block");
+			return;
+		}
+		$("#g"+clueNo).css("background-color","red");
+		if(clueNo==6){
+			document.getElementById("enter").disabled = true;
+			$(".hiddenBox").html("Congrats, you failed! The answer was: <b>"+ keyNow+"</b>");
+		}
+	}
+}
 var rngGen=new Math.seedrandom(getCurrentDate());
 function getRandomInt(min,max) {
   return min+Math.floor(rngGen() * (max-min));
@@ -53,6 +103,5 @@ function nextClue(){
 		$("#t"+shuffled[curRevealed]).fadeOut();
 		curRevealed+=1;
 	}
-	
 	clueNo+=1;
 }
