@@ -9,14 +9,26 @@ function convertUTCDateToLocalDate(date) {
     var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
     return newDate;   
 }
+function cookieDate(d) {
+  function d2(n) { return n < 10 ? '0' + n : n; }
+  var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  return '' +
+    days[d.getUTCDay()] + ', ' +
+    d2(d.getUTCDate()) + '-' +
+    months[d.getUTCMonth()] + '-' +
+    d.getUTCFullYear() + ' ' +
+    d2(d.getUTCHours()) + ':' +
+    d2(d.getUTCMinutes()) + ':' +
+    d2(d.getUTCSeconds()) + ' GMT';
+}
 function setCookie(cname, cvalue) {
   var nw=new Date();
-  nw.setDate(nw.getDate()+1);
-  var f=new Date(nw.getUTCFullYear(),nw.getUTCMonth(),nw.getUTCDate());
-  var d=convertUTCDateToLocalDate(f);
-  let expires = "expires="+d;
+  var f=new Date(nw.getUTCFullYear(),nw.getUTCMonth(),nw.getUTCDate()+1);
+  let expires = "expires="+f.toString()+" GMT";
   console.log(expires);
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   console.log(document.cookie);
 }
 
@@ -38,21 +50,23 @@ function getCookie(cname) {
 function load(){
 	var s=1;
 	while(getCookie("g"+s)!=""){
-		clueNo+=1;
+		nextClue();
 		var ne = document.getElementById('g' + s);
-		ne.textContent=getCookie("g"+s);
+		ne.textContent=getCookie("g"+s)=="___"?"":getCookie("g"+s);
 		if(getCookie("g"+s)==keys[keyNow]){
-			$("#g"+clueNo).css("background-color","red");
+			$("#g"+s).css("background-color","red");
 			while(clueNo<=6)nextClue();		
 			$(".hiddenBox").html("You guessed it right. Shame! <button style='float:right' onclick='copyToCB()'>Share</button>");
 			$(".hiddenBox").css("display","block");
 			return;
 		}
-		$("#g"+clueNo).css("background-color","red");
+		$("#g"+s).css("background-color","red");
 		if(clueNo==6){
 			document.getElementById("enter").disabled = true;
 			$(".hiddenBox").html("Congrats, you failed! The answer was: <b>"+ keyNow+"</b>");
+			$(".hiddenBox").css("display","block");
 		}
+		s+=1;
 	}
 }
 var rngGen=new Math.seedrandom(getCurrentDate());
