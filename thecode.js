@@ -53,8 +53,8 @@ function load(){
 		nextClue();
 		var ne = document.getElementById('g' + s);
 		ne.textContent=getCookie("g"+s)=="___"?"":getCookie("g"+s);
-		if(getCookie("g"+s)==keys[keyNow]){
-			$("#g"+s).css("background-color","red");
+		if(getCookie("g"+s)==keyNow){
+			$("#g"+s).css("background-color","yellow");
 			while(clueNo<=6)nextClue();		
 			$(".hiddenBox").html("You guessed it right. Shame! <button style='float:right' onclick='copyToCB()'>Share</button>");
 			$(".hiddenBox").css("display","block");
