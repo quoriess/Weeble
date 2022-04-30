@@ -55,6 +55,7 @@ function load(){
 		ne.textContent=getCookie("g"+s)=="___"?"":getCookie("g"+s);
 		if(getCookie("g"+s)==keyNow){
 			$("#g"+s).css("background-color","green");
+			tries=clueNo;
 			while(clueNo<=6)nextClue();		
 			$(".hiddenBox").html("You guessed it right. Shame! <button style='float:right' onclick='copyToCB()'>Share</button>");
 			$(".hiddenBox").css("display","block");
