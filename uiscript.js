@@ -32,11 +32,15 @@ $(function() {
 	$(".tile").css("height",f+"%")
 	$(".tile").css("position","absolute");
 	generateTileOrder();
+	var arm=new Math.seedrandom("amogus");
 	var t1=new Date(2022,3,30);
-	var dayNo= (Math.floor((new Date()-t1)/(24*3600*1000))+1);
+	var nw=new Date();
+	var utct1=new Date(t1.getUTCFullYear(),t1.getUTCMonth(),t1.getUTCDate());
+	var utcd=new Date(nw.getUTCFullYear(),nw.getUTCMonth(),nw.getUTCDate())
+	var dayNo= (Math.floor((utcd-utct1)/(24*3600*1000))+1);
 	console.log(dayNo);
 	var shuffledKeys = keys
-	  .map(value => ({ value, sort: (new Math.seedrandom("amogus"))() }))
+	  .map(value => ({ value, sort:  arm() }))
 	  .sort((a, b) => a.sort - b.sort)
 	  .map(({ value }) => value);
 	keyNow=shuffledKeys[dayNo%500];
@@ -51,8 +55,11 @@ function showFaqs(){
 var tries=0;
 function copyToCB(){
 	var t1=new Date(2022,3,30);
-	var s= Math.floor((new Date()-t1)/(24*3600*1000))+1;
-	navigator.clipboard.writeText("Weeble #"+s+": \n"+"\uD83D\uDFE5".repeat(tries-1)+"\uD83D\uDFE9");
+	var nw=new Date();
+	var utct1=new Date(t1.getUTCFullYear(),t1.getUTCMonth(),t1.getUTCDate());
+	var utcd=new Date(nw.getUTCFullYear(),nw.getUTCMonth(),nw.getUTCDate())
+	var dayNo= (Math.floor((utcd-utct1)/(24*3600*1000))+1);
+	navigator.clipboard.writeText("Weeble #"+dayNo+": \n"+"\uD83D\uDFE5".repeat(tries-1)+"\uD83D\uDFE9");
 }
 function valueEntered() {
     if (clueNo == 6) return;
