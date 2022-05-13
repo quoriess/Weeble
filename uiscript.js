@@ -32,7 +32,14 @@ $(function() {
 	$(".tile").css("height",f+"%")
 	$(".tile").css("position","absolute");
 	generateTileOrder();
-	keyNow=keys[getRandomInt(0,keys.length)]
+	var t1=new Date(2022,3,30);
+	var dayNo= (Math.floor((new Date()-t1)/(24*3600*1000))+1);
+	console.log(dayNo);
+	var shuffledKeys = keys
+	  .map(value => ({ value, sort: (new Math.seedrandom("amogus"))() }))
+	  .sort((a, b) => a.sort - b.sort)
+	  .map(({ value }) => value);
+	keyNow=shuffledKeys[dayNo%500];
 	$("#theImage").attr("src",data[keyNow]);
 	nextClue();
 	load();

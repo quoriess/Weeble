@@ -27,9 +27,7 @@ function setCookie(cname, cvalue) {
   var nw=new Date();
   var f=new Date(nw.getUTCFullYear(),nw.getUTCMonth(),nw.getUTCDate()+1);
   let expires = "expires="+f.toString()+" GMT";
-  console.log(expires);
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  console.log(document.cookie);
 }
 
 function getCookie(cname) {
