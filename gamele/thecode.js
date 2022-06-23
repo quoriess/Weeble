@@ -47,11 +47,11 @@ function getCookie(cname) {
 }
 function load(){
 	var s=1;
-	while(getCookie("g"+s)!=""){
+	while(getCookie("game_g"+s)!=""){
 		nextClue();
 		var ne = document.getElementById('g' + s);
-		ne.textContent=getCookie("g"+s)=="___"?"":getCookie("g"+s);
-		if(getCookie("g"+s)==keyNow){
+		ne.textContent=getCookie("game_g"+s)=="___"?"":getCookie("game_g"+s);
+		if(getCookie("game_g"+s)==keyNow){
 			$("#g"+s).css("background-color","green");
 			tries=clueNo-1;
 			while(clueNo<=6)nextClue();		

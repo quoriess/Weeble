@@ -71,7 +71,7 @@ function valueEntered() {
         return;
     }
     ne.textContent = txtbox.value;
-	setCookie("g"+clueNo,txtbox.value==""?"___":txtbox.value);
+	setCookie("game_g"+clueNo,txtbox.value==""?"___":txtbox.value);
     if(txtbox.value==keyNow){
 		tries=clueNo;
 		$("#g"+clueNo).css("background-color","green");	
