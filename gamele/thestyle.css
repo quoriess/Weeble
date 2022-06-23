@@ -1,0 +1,69 @@
+
+#main {
+  font-family:arial;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width:100%;
+}
+.txtbox_buton{
+	margin-top:20px;
+	height:40px;
+	
+}
+.txtbox{
+	width:74%;
+	float:left;
+	height:30px;
+}
+#theImage{
+	width:100%;
+	height:100%;
+}
+.hiddenBox{
+	display:none;
+	margin-top:10px;
+}
+#rel-container{
+	width:40%;
+	min-width:15em;
+	height:250px;
+	display:inline-block;
+	position:relative;
+	
+}
+#txtBox-container{
+	float:right;
+	width:60%;
+	position:relative;
+}
+.guess{
+	width:100%;
+	border:1px solid black;
+	padding-top:3px;
+	text-align:center;
+	margin-top:5px;
+	min-height:30px;
+}
+.tile{
+	background-color:black;
+}
+#dialog{
+}
+footer{
+	position: fixed;
+    height: 20px;
+	font-family:"Consolas";
+	font-size:8px;
+	float:left;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+	
+}
+.enter{
+	width:22%;
+	float:right;
+	height:30px;
+}
